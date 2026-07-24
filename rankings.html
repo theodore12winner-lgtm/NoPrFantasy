@@ -4,22 +4,363 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Real Unbiased Rankings for 2026-2027 Fantasy Football PPR Leagues</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #234D63;
-            margin: 0;
             padding: 20px;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
         }
-        
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
         h1 {
-            color: white;
+            color: #234D63;
             text-align: center;
-            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 16px;
+            border: 2px solid #234D63;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            border-color: #1a3647;
+            box-shadow: 0 0 5px rgba(35, 77, 99, 0.3);
+        }
+
+        .autocomplete-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .autocomplete-list.show {
+            display: block;
+        }
+
+        .autocomplete-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .autocomplete-item:hover,
+        .autocomplete-item.selected {
+            background-color: #234D63;
+            color: white;
+        }
+
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
+        .results-container {
+            margin-top: 30px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background-color: #234D63;
+            color: white;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #1a3647;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .rank-cell {
+            font-weight: 600;
+            color: #234D63;
+            width: 80px;
+        }
+
+        .file-upload {
+            margin-bottom: 20px;
+        }
+
+        .file-upload label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #234D63;
+        }
+
+        .file-upload input[type="file"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .status-message {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .status-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .status-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
         }
     </style>
 </head>
 <body>
-    <h1>Real Unbiased Rankings for 2026-2027 Fantasy Football PPR Leagues</h1>
+    <div class="container">
+        <h1>Real Unbiased Rankings for 2026-2027 Fantasy Football PPR Leagues</h1>
+
+        <div class="file-upload">
+            <label for="fileInput">Upload Fantasy.xlsx File:</label>
+            <input type="file" id="fileInput" accept=".xlsx,.xls" />
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="playerSearch" 
+                class="search-box" 
+                placeholder="Enter player first name, last name... (e.g., Patrick Mahomes)"
+                autocomplete="off"
+            />
+            <div id="autocompleteList" class="autocomplete-list"></div>
+        </div>
+
+        <div id="resultsContainer" class="results-container"></div>
+    </div>
+
+    <script>
+        let playerData = [];
+
+        const fileInput = document.getElementById('fileInput');
+        const playerSearch = document.getElementById('playerSearch');
+        const autocompleteList = document.getElementById('autocompleteList');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const statusMessage = document.getElementById('statusMessage');
+
+        // File upload handler
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    const data = new Uint8Array(event.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                    const rows = XLSX.utils.sheet_to_json(sheet);
+
+                    playerData = rows.map(row => ({
+                        rank: row['Rank'] || row['rank'] || '',
+                        player: row['Player'] || row['player'] || '',
+                        description: row['Description'] || row['Describtion'] || row['description'] || ''
+                    })).filter(item => item.player);
+
+                    showStatus(`Loaded ${playerData.length} players successfully!`, 'success');
+                    playerSearch.focus();
+                } catch (error) {
+                    showStatus('Error reading file. Please ensure it has Rank, Player, and Description columns.', 'error');
+                    console.error('Error:', error);
+                }
+            };
+            reader.readAsArrayBuffer(file);
+        });
+
+        // Search input handler
+        playerSearch.addEventListener('input', function() {
+            const searchTerm = this.value.trim().toLowerCase();
+
+            if (searchTerm.length === 0) {
+                autocompleteList.classList.remove('show');
+                resultsContainer.innerHTML = '';
+                return;
+            }
+
+            // Filter players based on search term
+            const matches = playerData.filter(player =>
+                player.player.toLowerCase().includes(searchTerm)
+            ).slice(0, 10);
+
+            if (matches.length === 0) {
+                autocompleteList.classList.remove('show');
+                resultsContainer.innerHTML = '<div class="no-results">No players found matching your search.</div>';
+                return;
+            }
+
+            // Display autocomplete suggestions
+            autocompleteList.innerHTML = matches.map((player, index) =>
+                `<div class="autocomplete-item" data-index="${index}">${player.player}</div>`
+            ).join('');
+            autocompleteList.classList.add('show');
+
+            // Add click handlers to autocomplete items
+            document.querySelectorAll('.autocomplete-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    selectPlayer(matches[index]);
+                });
+            });
+        });
+
+        // Keyboard navigation for autocomplete
+        playerSearch.addEventListener('keydown', function(e) {
+            const items = document.querySelectorAll('.autocomplete-item');
+            const selectedItem = document.querySelector('.autocomplete-item.selected');
+
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (!selectedItem && items.length > 0) {
+                    items[0].classList.add('selected');
+                } else if (selectedItem) {
+                    const nextItem = selectedItem.nextElementSibling;
+                    if (nextItem && nextItem.classList.contains('autocomplete-item')) {
+                        selectedItem.classList.remove('selected');
+                        nextItem.classList.add('selected');
+                    }
+                }
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (selectedItem) {
+                    const prevItem = selectedItem.previousElementSibling;
+                    if (prevItem && prevItem.classList.contains('autocomplete-item')) {
+                        selectedItem.classList.remove('selected');
+                        prevItem.classList.add('selected');
+                    }
+                }
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (selectedItem) {
+                    const index = parseInt(selectedItem.getAttribute('data-index'));
+                    const matches = playerData.filter(player =>
+                        player.player.toLowerCase().includes(playerSearch.value.trim().toLowerCase())
+                    );
+                    selectPlayer(matches[index]);
+                }
+            } else if (e.key === 'Escape') {
+                autocompleteList.classList.remove('show');
+            }
+        });
+
+        // Select player from autocomplete
+        function selectPlayer(player) {
+            playerSearch.value = player.player;
+            autocompleteList.classList.remove('show');
+            displayPlayerInfo(player);
+        }
+
+        // Display player information in table
+        function displayPlayerInfo(player) {
+            resultsContainer.innerHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Player</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-cell">${player.rank}</td>
+                            <td>${player.player}</td>
+                            <td>${player.description}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Show status message
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message ${type}`;
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusMessage.className = 'status-message';
+                }, 3000);
+            }
+        }
+
+        // Close autocomplete when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target !== playerSearch && e.target !== autocompleteList) {
+                autocompleteList.classList.remove('show');
+            }
+        });
+    </script>
 </body>
 </html>
