@@ -183,7 +183,7 @@
 
         <div class="file-upload">
             <label for="fileInput">Upload Fantasy.xlsx File (or drop Player_Ranking_Info.xlsx in the same folder):</label>
-            <input type="file" id="fileInput" accept=".xlsx,.xls" />
+            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" />
         </div>
 
         <div id="statusMessage" class="status-message"></div>
@@ -211,22 +211,112 @@
         const resultsContainer = document.getElementById('resultsContainer');
         const statusMessage = document.getElementById('statusMessage');
 
-        // Try to automatically load Player_Ranking_Info.xlsx from the same folder
-        async function loadDefaultFile() {
-            const possibleFiles = ['Player_Ranking_Info.xlsx', 'Player_Ranking_Info.xls', 'player_ranking_info.xlsx', 'Player_Ranking_Info.xlsx.xml'];
-            for (const fileName of possibleFiles) {
-                try {
-                    const resp = await fetch(fileName);
-                    if (!resp.ok) throw new Error('not found');
-                    const arrayBuffer = await resp.arrayBuffer();
-                    parseWorkbook(arrayBuffer, fileName);
-                    showStatus(`Loaded ${fileName} automatically.`, 'success');
-                    return;
-                } catch (err) {
-                    // try next
+        // Parse CSV text and populate playerData
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            if (lines.length < 2) {
+                showStatus('CSV file is empty or has no data rows.', 'error');
+                return false;
+            }
+
+            // Parse header
+            const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+            const rankIndex = headers.findIndex(h => h === 'rank');
+            const playerIndex = headers.findIndex(h => h === 'player');
+            const descIndex = headers.findIndex(h => h === 'description');
+
+            if (playerIndex === -1) {
+                showStatus('CSV must have a Player column.', 'error');
+                return false;
+            }
+
+            // Parse data rows
+            playerData = [];
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue; // Skip empty lines
+
+                // Handle quoted CSV fields properly
+                const values = parseCSVLine(line);
+                
+                playerData.push({
+                    rank: rankIndex !== -1 && values[rankIndex] ? values[rankIndex] : '',
+                    player: playerIndex !== -1 && values[playerIndex] ? values[playerIndex] : '',
+                    description: descIndex !== -1 && values[descIndex] ? values[descIndex] : ''
+                });
+            }
+
+            playerData = playerData.filter(item => item.player);
+
+            if (playerData.length === 0) {
+                showStatus('No player data found in CSV file.', 'error');
+                return false;
+            }
+
+            displayAllPlayers();
+            playerSearch.focus();
+            return true;
+        }
+
+        // Parse a single CSV line handling quoted fields
+        function parseCSVLine(line) {
+            const result = [];
+            let current = '';
+            let insideQuotes = false;
+
+            for (let i = 0; i < line.length; i++) {
+                const char = line[i];
+                const nextChar = line[i + 1];
+
+                if (char === '"') {
+                    if (insideQuotes && nextChar === '"') {
+                        current += '"';
+                        i++; // Skip next quote
+                    } else {
+                        insideQuotes = !insideQuotes;
+                    }
+                } else if (char === ',' && !insideQuotes) {
+                    result.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
                 }
             }
-            showStatus('No default spreadsheet found. You can upload one manually.', 'error');
+            result.push(current.trim());
+            return result;
+        }
+
+        // Try to automatically load Player_Ranking_Info.csv or xlsx from the same folder
+        async function loadDefaultFile() {
+            const possibleFiles = [
+                { name: 'Player_Ranking_Info.csv', isCSV: true },
+                { name: 'player_ranking_info.csv', isCSV: true },
+                { name: 'Player_Ranking_Info.xlsx', isCSV: false },
+                { name: 'Player_Ranking_Info.xls', isCSV: false }
+            ];
+
+            for (const file of possibleFiles) {
+                try {
+                    const resp = await fetch(file.name);
+                    if (!resp.ok) throw new Error('not found');
+                    
+                    if (file.isCSV) {
+                        const csvText = await resp.text();
+                        if (parseCSV(csvText)) {
+                            showStatus(`Loaded ${file.name} automatically.`, 'success');
+                            return;
+                        }
+                    } else {
+                        const arrayBuffer = await resp.arrayBuffer();
+                        parseWorkbook(arrayBuffer, file.name);
+                        showStatus(`Loaded ${file.name} automatically.`, 'success');
+                        return;
+                    }
+                } catch (err) {
+                    // try next file
+                }
+            }
+            showStatus('No default file found. You can upload one manually.', 'error');
         }
 
         // Parse workbook arrayBuffer and populate playerData
@@ -265,14 +355,24 @@
             const reader = new FileReader();
             reader.onload = function(event) {
                 try {
-                    parseWorkbook(event.target.result, file.name);
-                    showStatus(`Loaded ${file.name} successfully!`, 'success');
+                    if (file.name.endsWith('.csv')) {
+                        parseCSV(event.target.result);
+                        showStatus(`Loaded ${file.name} successfully!`, 'success');
+                    } else {
+                        parseWorkbook(event.target.result, file.name);
+                        showStatus(`Loaded ${file.name} successfully!`, 'success');
+                    }
                 } catch (error) {
                     showStatus('Error reading file. Please ensure it has Rank, Player, and Description columns.', 'error');
                     console.error('Error:', error);
                 }
             };
-            reader.readAsArrayBuffer(file);
+
+            if (file.name.endsWith('.csv')) {
+                reader.readAsText(file);
+            } else {
+                reader.readAsArrayBuffer(file);
+            }
         });
 
         // Display all players in a table
