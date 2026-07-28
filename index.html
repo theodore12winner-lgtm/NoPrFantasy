@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NoPrFantasy — Home</title>
+  <meta name="description" content="NoPrFantasy — Fantasy Football" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#ffffff;
+      --accent:#0f6b8a;
+      --muted:#6b7280;
+      --text:#0b1220;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071023 0%,#072033 60%);color:var(--text);}
+    .wrap{max-width:980px;margin:36px auto;padding:24px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#3b82f6);display:flex;align-items:center;justify-content:center;font-weight:800;color:white;box-shadow:0 6px 18px rgba(2,6,23,.6)}
+    nav a{color:var(--card);text-decoration:none;margin-left:14px;font-weight:600;padding:8px 10px;border-radius:8px}
+    nav a:hover{background:rgba(255,255,255,0.04)}
+    main{margin-top:28px;display:grid;grid-template-columns:1fr;gap:18px}
+    .hero{background:var(--card);padding:22px;border-radius:12px;box-shadow:0 6px 20px rgba(2,6,23,.45);color:var(--text)}
+    .hero h1{margin:0;font-size:1.6rem}
+    .hero p{margin:8px 0 0;color:var(--muted)}
+    .cards{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+    .card{background:rgba(255,255,255,0.96);padding:14px;border-radius:10px;flex:1 1 220px;min-width:180px;color:var(--text);box-shadow:0 2px 6px rgba(2,6,23,.06)}
+    .btn{display:inline-block;background:var(--accent);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700;margin-top:12px}
+    footer{margin-top:28px;color:var(--muted);font-size:0.9rem;text-align:center}
+    @media(min-width:760px){ .hero{display:flex;align-items:center;justify-content:space-between;gap:18px} }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">NF</div>
+        <div>
+          <div style="font-weight:800;color:white">NoPrFantasy</div>
+          <div style="font-size:0.85rem;color:var(--muted)">Fantasy Football</div>
+        </div>
+      </div>
+
+      <nav aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="rankings.html">Rankings</a>
+        <a href="roster.html">Roster</a>
+        <a href="schedule.html">Schedule</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="home-title">
+        <div>
+          <h1 id="home-title">NoPrFantasy</h1>
+          <p>Your source for unbiased PPR rankings and league info for the 2026–2027 season.</p>
+          <a class="btn" href="rankings.html">View Rankings</a>
+        </div>
+        <div style="min-width:220px;text-align:right;color:var(--muted)">
+          <div style="font-weight:700;color:var(--text)">League: NoPrFantasy</div>
+          <div style="margin-top:6px">Upload your Player_Ranking_Info.xlsx on the Rankings page to load data.</div>
+        </div>
+      </section>
+
+      <section aria-labelledby="quick-links">
+        <h2 id="quick-links" style="margin:8px 0 6px 0;color:var(--card)">Quick links</h2>
+        <div class="cards">
+          <div class="card">
+            <strong>Rankings</strong>
+            <div style="margin-top:8px;color:var(--muted)">Team standings, rankings, and player info. <a href="rankings.html" style="color:var(--accent);text-decoration:none">Open</a></div>
+          </div>
+          <div class="card">
+            <strong>Roster</strong>
+            <div style="margin-top:8px;color:var(--muted)">Manage rosters and lineups. <a href="roster.html" style="color:var(--accent);text-decoration:none">Open</a></div>
+          </div>
+          <div class="card">
+            <strong>Schedule</strong>
+            <div style="margin-top:8px;color:var(--muted)">Matchups and results. <a href="schedule.html" style="color:var(--accent);text-decoration:none">Open</a></div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      If your Rankings page is in a subfolder, move this file to the same folder or update the "rankings.html" links accordingly.
+    </footer>
+  </div>
+
+  <script>
+    // Highlight current nav item
+    (function(){
+      try{
+        const links = document.querySelectorAll('nav a');
+        const current = location.pathname.split('/').pop() || 'index.html';
+        links.forEach(a=>{ if(a.getAttribute('href') === current) a.style.background = 'rgba(255,255,255,0.06)'; });
+      }catch(e){}
+    })();
+  </script>
+</body>
+</html>
