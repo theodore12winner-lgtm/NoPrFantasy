@@ -182,7 +182,7 @@
         <h1>Real Unbiased Rankings for 2026-2027 Fantasy Football PPR Leagues</h1>
 
         <div class="file-upload">
-            <label for="fileInput">Upload Fantasy.xlsx File:</label>
+            <label for="fileInput">Upload Fantasy.xlsx File (or drop Player_Ranking_Info.xlsx in the same folder):</label>
             <input type="file" id="fileInput" accept=".xlsx,.xls" />
         </div>
 
@@ -211,6 +211,52 @@
         const resultsContainer = document.getElementById('resultsContainer');
         const statusMessage = document.getElementById('statusMessage');
 
+        // Try to automatically load Player_Ranking_Info.xlsx from the same folder
+        async function loadDefaultFile() {
+            const possibleFiles = ['Player_Ranking_Info.xlsx', 'Player_Ranking_Info.xls', 'player_ranking_info.xlsx', 'Player_Ranking_Info.xlsx.xml'];
+            for (const fileName of possibleFiles) {
+                try {
+                    const resp = await fetch(fileName);
+                    if (!resp.ok) throw new Error('not found');
+                    const arrayBuffer = await resp.arrayBuffer();
+                    parseWorkbook(arrayBuffer, fileName);
+                    showStatus(`Loaded ${fileName} automatically.`, 'success');
+                    return;
+                } catch (err) {
+                    // try next
+                }
+            }
+            showStatus('No default spreadsheet found. You can upload one manually.', 'error');
+        }
+
+        // Parse workbook arrayBuffer and populate playerData
+        function parseWorkbook(arrayBuffer, sourceName = '') {
+            try {
+                const data = new Uint8Array(arrayBuffer);
+                const workbook = XLSX.read(data, { type: 'array' });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                const rows = XLSX.utils.sheet_to_json(sheet, { defval: '' });
+
+                playerData = rows.map(row => ({
+                    rank: row['Rank'] || row['rank'] || row['RANK'] || row['Position'] || '',
+                    player: row['Player'] || row['player'] || row['PLAYER'] || row['Name'] || row['name'] || '',
+                    description: row['Description'] || row['Describtion'] || row['description'] || row['Notes'] || row['notes'] || ''
+                })).filter(item => item.player);
+
+                if (playerData.length === 0) {
+                    showStatus('The spreadsheet was loaded but no player rows were found. Make sure there is a Player column.', 'error');
+                    return;
+                }
+
+                // Display all players immediately
+                displayAllPlayers();
+                playerSearch.focus();
+            } catch (error) {
+                console.error(error);
+                showStatus('Error parsing the spreadsheet. Make sure it has Rank, Player, and Description columns.', 'error');
+            }
+        }
+
         // File upload handler
         fileInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
@@ -219,19 +265,8 @@
             const reader = new FileReader();
             reader.onload = function(event) {
                 try {
-                    const data = new Uint8Array(event.target.result);
-                    const workbook = XLSX.read(data, { type: 'array' });
-                    const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                    const rows = XLSX.utils.sheet_to_json(sheet);
-
-                    playerData = rows.map(row => ({
-                        rank: row['Rank'] || row['rank'] || '',
-                        player: row['Player'] || row['player'] || '',
-                        description: row['Description'] || row['Describtion'] || row['description'] || ''
-                    })).filter(item => item.player);
-
-                    showStatus(`Loaded ${playerData.length} players successfully!`, 'success');
-                    playerSearch.focus();
+                    parseWorkbook(event.target.result, file.name);
+                    showStatus(`Loaded ${file.name} successfully!`, 'success');
                 } catch (error) {
                     showStatus('Error reading file. Please ensure it has Rank, Player, and Description columns.', 'error');
                     console.error('Error:', error);
@@ -240,13 +275,44 @@
             reader.readAsArrayBuffer(file);
         });
 
+        // Display all players in a table
+        function displayAllPlayers() {
+            if (!playerData || playerData.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No player data to display.</div>';
+                return;
+            }
+
+            const headers = ['Rank', 'Player', 'Description'];
+            const rowsHtml = playerData.map(p => `
+                <tr>
+                    <td class="rank-cell">${escapeHtml(p.rank)}</td>
+                    <td>${escapeHtml(p.player)}</td>
+                    <td>${escapeHtml(p.description)}</td>
+                </tr>
+            `).join('');
+
+            resultsContainer.innerHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            ${headers.map(h => `<th>${h}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${rowsHtml}
+                    </tbody>
+                </table>
+            `;
+        }
+
         // Search input handler
         playerSearch.addEventListener('input', function() {
             const searchTerm = this.value.trim().toLowerCase();
 
             if (searchTerm.length === 0) {
                 autocompleteList.classList.remove('show');
-                resultsContainer.innerHTML = '';
+                // show all players when search is cleared
+                displayAllPlayers();
                 return;
             }
 
@@ -263,7 +329,7 @@
 
             // Display autocomplete suggestions
             autocompleteList.innerHTML = matches.map((player, index) =>
-                `<div class="autocomplete-item" data-index="${index}">${player.player}</div>`
+                `<div class="autocomplete-item" data-index="${index}">${escapeHtml(player.player)}</div>`
             ).join('');
             autocompleteList.classList.add('show');
 
@@ -335,9 +401,9 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="rank-cell">${player.rank}</td>
-                            <td>${player.player}</td>
-                            <td>${player.description}</td>
+                            <td class="rank-cell">${escapeHtml(player.rank)}</td>
+                            <td>${escapeHtml(player.player)}</td>
+                            <td>${escapeHtml(player.description)}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -355,12 +421,26 @@
             }
         }
 
+        // Escape HTML to avoid injection when rendering cell values
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
         // Close autocomplete when clicking outside
         document.addEventListener('click', function(e) {
             if (e.target !== playerSearch && e.target !== autocompleteList) {
                 autocompleteList.classList.remove('show');
             }
         });
+
+        // Load default file on page load
+        document.addEventListener('DOMContentLoaded', loadDefaultFile);
     </script>
 </body>
 </html>
