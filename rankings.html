@@ -180,12 +180,6 @@
 <body>
     <div class="container">
         <h1>Real Unbiased Rankings for 2026-2027 Fantasy Football PPR Leagues</h1>
-
-        <div class="file-upload">
-            <label for="fileInput">Upload Fantasy.xlsx File (or drop Player_Ranking_Info.xlsx in the same folder):</label>
-            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" />
-        </div>
-
         <div id="statusMessage" class="status-message"></div>
 
         <div class="search-container">
@@ -205,7 +199,6 @@
     <script>
         let playerData = [];
 
-        const fileInput = document.getElementById('fileInput');
         const playerSearch = document.getElementById('playerSearch');
         const autocompleteList = document.getElementById('autocompleteList');
         const resultsContainer = document.getElementById('resultsContainer');
@@ -288,35 +281,15 @@
 
         // Try to automatically load Player_Ranking_Info.csv or xlsx from the same folder
         async function loadDefaultFile() {
-            const possibleFiles = [
-                { name: 'Player_Ranking_Info.csv', isCSV: true },
-                { name: 'player_ranking_info.csv', isCSV: true },
-                { name: 'Player_Ranking_Info.xlsx', isCSV: false },
-                { name: 'Player_Ranking_Info.xls', isCSV: false }
-            ];
-
-            for (const file of possibleFiles) {
-                try {
-                    const resp = await fetch(file.name);
-                    if (!resp.ok) throw new Error('not found');
-                    
-                    if (file.isCSV) {
-                        const csvText = await resp.text();
-                        if (parseCSV(csvText)) {
-                            showStatus(`Loaded ${file.name} automatically.`, 'success');
-                            return;
-                        }
-                    } else {
-                        const arrayBuffer = await resp.arrayBuffer();
-                        parseWorkbook(arrayBuffer, file.name);
-                        showStatus(`Loaded ${file.name} automatically.`, 'success');
-                        return;
-                    }
-                } catch (err) {
-                    // try next file
-                }
+            try {
+                const response = await fetch("Player_Ranking_Info.csv");
+                if (!response.ok) throw new Error("File not found");
+                const arrayBuffer = await response.arrayBuffer();
+                parseWorkbook(arrayBuffer);
+            } catch (error) {
+                showStatus("Unable to load Player_Ranking_Info.csv.", "error");
+                console.error(error);
             }
-            showStatus('No default file found. You can upload one manually.', 'error');
         }
 
         // Parse workbook arrayBuffer and populate playerData
@@ -346,34 +319,6 @@
                 showStatus('Error parsing the spreadsheet. Make sure it has Rank, Player, and Description columns.', 'error');
             }
         }
-
-        // File upload handler
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                try {
-                    if (file.name.endsWith('.csv')) {
-                        parseCSV(event.target.result);
-                        showStatus(`Loaded ${file.name} successfully!`, 'success');
-                    } else {
-                        parseWorkbook(event.target.result, file.name);
-                        showStatus(`Loaded ${file.name} successfully!`, 'success');
-                    }
-                } catch (error) {
-                    showStatus('Error reading file. Please ensure it has Rank, Player, and Description columns.', 'error');
-                    console.error('Error:', error);
-                }
-            };
-
-            if (file.name.endsWith('.csv')) {
-                reader.readAsText(file);
-            } else {
-                reader.readAsArrayBuffer(file);
-            }
-        });
 
         // Display all players in a table
         function displayAllPlayers() {
