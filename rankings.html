@@ -104,9 +104,10 @@
         }
 
         table {
-            width: 100%;
+    	    width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            background-color: #FFF3E0;
         }
 
         th {
@@ -119,16 +120,17 @@
         }
 
         td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #ddd;
+           padding: 12px 15px;
+           border-bottom: 1px solid #E6C9A8;
+           background-color: #FFF3E0;
         }
 
         tr:hover {
-            background-color: #f5f5f5;
+            background-color: #FFD8A8;
         }
 
         tr:nth-child(even) {
-            background-color: #fafafa;
+            background-color: #FFF1DC;
         }
 
         .rank-cell {
@@ -193,11 +195,34 @@
             <div id="autocompleteList" class="autocomplete-list"></div>
         </div>
 
-        <div id="resultsContainer" class="results-container"></div>
+        <div style="margin-bottom:15px;"><label><strong>Sort by:</strong></label> <select id="sortSelect"><option value="rank">Rank</option><option value="last">Last Name</option></select></div><div id="resultsContainer" class="results-container"></div>
     </div>
 
     <script>
         let playerData = [];
+
+        const defaultPlayerData = [
+  {
+    rank: "105",
+    player: "Jakobi Meyers",
+    description: "WR46 - Meyers was a solid WR for the Jaguars last year, but there is no telling who will actually be the WR1 in this offense."
+  },
+  {
+    rank: "106",
+    player: "Patrick Mahomes",
+    description: "QB11 - Mahomes looks healthy, and this Chiefs team has been the best he has had in the past few years."
+  },
+  {
+    rank: "107",
+    player: "Kenneth Gainwell",
+    description: "RB38 - Gainwell averaged 16 PPR PPG last season, but he is a receiving back. With Bucky taking most of the rushing opportunity, Gainwell will only get the receiving work."
+  },
+  {
+    rank: "108",
+    player: "Rachaad White",
+    description: "RB39 - White signed with the Commanders for $2 million. White has been a historically inefficient running back, but he will get all the receiving work."
+  }
+];
 
         const playerSearch = document.getElementById('playerSearch');
         const autocompleteList = document.getElementById('autocompleteList');
@@ -287,8 +312,17 @@
                 const arrayBuffer = await response.arrayBuffer();
                 parseWorkbook(arrayBuffer);
             } catch (error) {
-                showStatus("Unable to load Player_Ranking_Info.csv.", "error");
-                console.error(error);
+                console.warn("Default file could not be loaded. Using built-in player data.");
+
+    		 playerData = [...defaultPlayerData];
+
+    		displayAllPlayers();
+
+    		showStatus(
+        			"Using built-in player rankings because the rankings file could not be loaded.",
+        				"success"
+    			);
+                
             }
         }
 
@@ -320,7 +354,8 @@
             }
         }
 
-        // Display all players in a table
+        function getSortedPlayers(){const m=document.getElementById("sortSelect")?.value||"rank";const a=[...playerData];if(m==="last"){a.sort((x,y)=>{const lx=x.player.trim().split(/\s+/).pop().toLowerCase(),ly=y.player.trim().split(/\s+/).pop().toLowerCase();return lx.localeCompare(ly)||x.player.localeCompare(y.player);});}else{a.sort((x,y)=>(parseInt(x.rank)||9999)-(parseInt(y.rank)||9999));}return a;}
+// Display all players in a table
         function displayAllPlayers() {
             if (!playerData || playerData.length === 0) {
                 resultsContainer.innerHTML = '<div class="no-results">No player data to display.</div>';
@@ -328,7 +363,7 @@
             }
 
             const headers = ['Rank', 'Player', 'Description'];
-            const rowsHtml = playerData.map(p => `
+            const rowsHtml = getSortedPlayers().map(p => `
                 <tr>
                     <td class="rank-cell">${escapeHtml(p.rank)}</td>
                     <td class="player-cell">${escapeHtml(p.player)}</td>
@@ -485,7 +520,7 @@
         });
 
         // Load default file on page load
-        document.addEventListener('DOMContentLoaded', loadDefaultFile);
+        document.addEventListener("DOMContentLoaded",()=>{loadDefaultFile();document.getElementById("sortSelect").addEventListener("change",displayAllPlayers);});
     </script>
 </body>
 </html>
