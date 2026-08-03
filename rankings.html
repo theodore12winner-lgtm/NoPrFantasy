@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #12140F;
+            background-color: #234D63;
             padding: 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
@@ -137,12 +137,6 @@
             width: 80px;
         }
 
-        /* Player name color requested */
-        .player-cell {
-            color: #C28B27;
-            font-weight: 600;
-        }
-
         .file-upload {
             margin-bottom: 20px;
         }
@@ -187,7 +181,13 @@
     <div class="container">
         <h1>Real Unbiased Rankings for 2026-2027 Fantasy Football PPR Leagues</h1>
 
-       
+        <div class="file-upload">
+            <label for="fileInput">Upload Fantasy.xlsx File (or drop Player_Ranking_Info.xlsx in the same folder):</label>
+            <input type="file" id="fileInput" accept=".xlsx,.xls,.csv" />
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+
         <div class="search-container">
             <input 
                 type="text" 
@@ -502,7 +502,7 @@
                     <tbody>
                         <tr>
                             <td class="rank-cell">${escapeHtml(player.rank)}</td>
-                            <td class="player-cell">${escapeHtml(player.player)}</td>
+                            <td>${escapeHtml(player.player)}</td>
                             <td>${escapeHtml(player.description)}</td>
                         </tr>
                     </tbody>
