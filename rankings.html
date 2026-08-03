@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #234D63;
+            background-color: #12140F;
             padding: 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
@@ -135,6 +135,12 @@
             font-weight: 600;
             color: #234D63;
             width: 80px;
+        }
+
+        /* Player name color requested */
+        .player-cell {
+            color: #C28B27;
+            font-weight: 600;
         }
 
         .file-upload {
@@ -380,7 +386,7 @@
             const rowsHtml = playerData.map(p => `
                 <tr>
                     <td class="rank-cell">${escapeHtml(p.rank)}</td>
-                    <td>${escapeHtml(p.player)}</td>
+                    <td class="player-cell">${escapeHtml(p.player)}</td>
                     <td>${escapeHtml(p.description)}</td>
                 </tr>
             `).join('');
@@ -496,7 +502,7 @@
                     <tbody>
                         <tr>
                             <td class="rank-cell">${escapeHtml(player.rank)}</td>
-                            <td>${escapeHtml(player.player)}</td>
+                            <td class="player-cell">${escapeHtml(player.player)}</td>
                             <td>${escapeHtml(player.description)}</td>
                         </tr>
                     </tbody>
