@@ -1,8 +1,201 @@
-Rank,Player,Description
-1,Jahmyr Gibbs,"Good Offense, the departure of David Montgomery is huge for Gibbs"
-2,Jamar Chase,"Good Offense, Joe Burrow is in line for an MVP type season with an easy schedule, The Bengals have the 4th easiest schedule for WRs this year"
-3,Bijan Robinson,"Not a great offense, but Tua loves checking down the ball to his runningbacks and he is one of the few bright spots on the Falcons"
-4,Puka Nacua,"Great offense, but with the addition of Myles Garret makes this already pretty good defense into one of the great defenses in the league, but with the addition, the defense might be too good because they would hold other teams to less points and the already great offense would blow teams out early and make the starters have less playing time"
-5,Jaxon Smith-Njigba,"With the departure of Kenneth Walker and the injury to Zach Charbonnet, it seems as if they will lean more pass heavy than last year, but with the departure of their offensive coordinator the offense may see regression in the passing and running game"
-6,Christian McCaffrey,"His 2025-2026 fantasy season was ethereal, but over the last 30 years 75% runningbacks with 300+ carries the next season either regressed or got injured, and with his achilles issue still lingering since it has not been resolved he is a massive risk to take in the first round, but if he can give you at least 85% of what he did last year he will still be worth the risk"
-7,Amon-ra St. Brown,"He has the highest floor out of any wr and he is just a safe pick in the first round"
+Rank,Position Rank,Player,Description
+1,RB1,Jahmyr Gibbs,"Gibbs is in a good offense; the departure of David Montgomery is huge for Gibbs because of the vacated carries in the offense, and it is safe to say that Isiah Pacheco has been getting worse over the years, efficiency, rushing, and touchdown-wise"
+2,WR1,Jamar Chase,Good Offense: Joe Burrow is in line for an MVP-type season with an easy schedule. The Bengals have the 4th easiest schedule for WRs this year
+3,RB2,Bijan Robinson,"Not a great offense, but Tua loves checking down the ball to his running backs, and he is one of the few bright spots on the Falcons. This also depends if Penix takes the starting role; if he does, it will be worse for Bijan"
+4,WR2,Puka Nacua,"Great offense, but with the addition of Myles Garret makes this already pretty good defense into one of the great defenses in the league, with the addition, the defense might be too good because they would hold other teams to fewer points, and the already great offense would blow teams out early and make the starters have less playing time"
+5,WR3,Jaxon Smith-Njigba,"With the departure of Kenneth Walker and the injury to Zach Charbonnet, it seems as if they will lean more pass-heavy than last year, but with the departure of their offensive coordinator, the offense may see regression in the passing and running game"
+6,RB3,Christian McCaffrey,"His 2025-2026 fantasy season was ethereal, but over the last 30 years 75% runningbacks with 300+ carries the next season either regressed or got injured, and with his achilles issue still lingering since it has not been resolved he is a massive risk to take in the first round, but if he can give you at least 85% of what he did last year he will still be worth the risk"
+7,WR4,Amon-ra St. Brown,"He has the highest floor out of any WR, and he is just a safe pick in the first round"
+8,RB4,Jonathon Taylor,"Taylor has the same Oline, but it will be hard for him to top his 23 rushing touchdowns this year"
+9,WR5,CeeDee Lamb,"Lamb still put up 1000 yards while missing 4 games last year and leaving one early; he still averaged 14.35 PPG in PPR. Although Pickens outshined him, it is still not out of the picture that CeeDee Lamb can still return to his 2023 self because George Pickens takes most of the attention away from the defence"
+10,RB5,James Cook,Cook was the rushing yards leader in the NFL last year. He was great last year and should increase his receiving touchdowns from 2 last year 
+11,RB6,Ashton Jeanty,"The Raiders signed Tyler Linderbaum, one of the best centers in the league, and Jackson Powers Johnson is healthy, meaning to say that the offensive line got so much better. With the signing of Klint Kubiak for the head coaching position, the offense itself should get better, and Jeanty should get more receiving work "
+12,WR6,Justin Jefferson,"Justin Jefferson will benefit greatly if Kyler Murray starts, but recent news of no clear leader at the Quarterback position between Kyler and Mccarthy it is a toss up wether Jefferson will replicate last season or not"
+13,RB7,Saquon Barkley,"The offensive coordinator on the Eagles has said they are planning to give the ball to Saquon 20 carries a game, and with the departure of Aj Brown, they will be a more run-heavy team"
+14,RB8,Omarion Hampton,"With the addition of Mike McDaniel as the new offensive coordinator, Hampton will immensely benefit in this new offense, and escpecially because Najee Harris is getting older and will get fewer carries "
+15,RB9,De'von Achane,"Achane is the only superstar on this Miami offense. He should get a larger role, but it's questionable if Ollie Gordon will take significant snaps away from Achane because they will probably be down early in games, letting backups try to prove themselves"
+16,WR7,AJ Brown,"AJ Brown has the best case to finish as Wr1 for this fantasy football season, but problems are already showing during training camp with him criticizing the offense. He does play in an easy division and is the true alpha WR that Drake Maye needs"
+17,RB10,Chase Brown,"Chase Brown has been taking snaps lining up at WR, and he averaged 21 fantasy points per game when Joe Burrow was healthy. Brown should get more catches, and if Burrow is healthy for this season, Brown will be a fantasy monster"
+18,WR8,Drake London,"London is a borderline elite receiver, but his quarterback situation is scary to say the least. He either can explode or bust; there is no in between"
+19,RB11,Kenneth Walker,"Walker benefits due to his signing with the Chiefs, but he is injury-prone, and finally getting the lead back role with no competition could take a toll on his body. If it doesn't, he will be a cheap high-upside RB1 "
+20,RB12,Derrick Henry,"Henry should be better this year because Lamar is back, but the main concern is when he will finally slow down"
+21,WR9,Rashee Rice,"Rice looks stiff at training camp, but with no real competition to be the main guy in Kansas City, he is a great option to be a WR1 on any fantasy team"
+22,TE1,Brock Bowers,"Bowers did great with Geno Smith as his quarterback last year, and with Geno gone, Kirk Cousins is a huge upgrade for Bowers in this offense, and the addition of Klint Kubiak will transform the offense "
+23,RB13,Jeremiyah Love,"News from training camp has been pointing to Allgeier having the lead back role, but Love could be a valuable late bloomer into the season, but it should be a committee for the first couple of weeks"
+24,WR10,Nico Collins,Nico Collins is a great Wr1 and will be insanely good if CJ Stroud can play better. Nico will be a great Wr1
+25,TE2,Trey McBride,"McBride should still be a top tight end, but they will be down early in games, and they will probably try to develop Jeremiyah Love"
+26,RB14,Josh Jacobs,"Jacobs is a great low RB1, but if he gets in trouble for his offseason shenanigans, it will compromise his season"
+27,WR11,Chris Olave,"Chris Olave just got paid a huge contract. He is the guy in New Orleans, but with the free agent signing of Travis Etienne, they will run the ball more than last season, and with their early draft pick on Jordan Tyson, he may take a decent chunk of volume away from Chris Olave"
+28,WR12,Ladd McConkey,"Ladd McConkey will greatly benefit under Mike McDaniel because he knows how to utilize WRs, and with the sort of emergence of Quentin Johnston, there will be less defensive presence focused on Ladd"
+29,WR13,Emka Egbuka,"Emeka Egbuka was amazing last year for the first few games, until his hamstring issue and Baker's overall decline. Mike Evans left, leaving the Buccaneers offense with so many vacated targets. Emeka benefited from a lack of run game and Baker's short MVP run; Emeka should take a step forward this season, but it matters if Baker is not injured."
+30,QB1,Josh Allen,"Josh Allen has the highest floor and ceiling for any QB, and he is consistent and rarely injured"
+31,WR14,George Pickens,Pickens is in a great air-raid offense and will be a great fantasy high-upside WR2 or low WR1. He averaged 15 PPR PPG with Lamb and 24.2 PPR PPG without him; he will still be a viable WR1 in a top 3 offense
+32,WR15,Devonte Smith,"Devonte Smith is the clear Wr1 on his team and has a clear connection with Hurts, but they will be a run-first team, and as I project the offense with the highest percentage of run rate "
+33,RB15,Javonte Williams,"Javonte is a great running back for as they are calling it the ""Greatest Offense There Is,"" but they are a pass-heavy team. Javonte will be a high-tier RB2, low-tier RB1. He should get great usage in the red zone like last year"
+34,WR16,Malik Nabers,Nabers looks healthy. Dart and Nabers should go bananas this year unless they really do abide by what Harbuagh is saying with a run-first offense
+35,WR17,Tetairoa McMillan,"McMillian should be a great upside WR, but it is a question if Bryce Young can fully unlock him"
+36,WR18,Garret Wilson,"Wilson should have a slight upgrade at Quarterback with Geno Smith, but it depends if we are going to see last year's Geno Smith, who did horribly with no weapons, or a Geno Smith from his time in Seattle. Either way, Wilson should be a great WR for fantasy, and he averaged 15.7 PPR PPG"
+37,RB16,Cam Skattebo,"Cam Skattebo broke out as a rookie but had a gruesome injury. John Harbaugh has indicated that this will be a run-first team, with Skattebo as the lead back; the only thing in his way is the potential of injury. Needless to say, he can be a low-tier RB1 or high-tier RB2; he averaged 16 PPR PPG"
+38,RB17,Bucky Irving,"Bucky had a down season, but Mike Evans left, and they did little to bring any other true competition for his role in this offense. Kenneth Gainwell is a receiving back, so most of the rushing opportunities will go to Bucky"
+39,"Corum is a valuable RB handcuff. He ended last season with 953 rushing yards, and with Kyren Williams getting older and fewer carries over the past two years, Corum can take the lead back role this season, but it will probably be a committee. The potential for Kyren to get injured and Corum running away with the job can not be ruled out",Travis Etienne,"Etienne is a good RB, especially in this Kellen Moore run offense, but the re-signing of Alvin Kamara makes it so we can not predict the split of the carries"
+40,RB19,Breece Hall,"Breece Hall was great last year, but Aaron Glen has said that they will utilize Braelon Allen and Isiah Davis as a three-headed monster, so the opportunities will decrease, but the offense should have gotten better because Wilson is back, and they got a freakazoid TE in Kenyon Sadiq, and Geno Smith should be a substantial upgrade from Justin Fields"
+41,WR19,Terry McLaurin,"The offensive coordinator on the Washington Commanders has said they plan to get McLaurin at least 10 targets a game, and Jayden Daniels is back, so McLaurin should be in line for a huge comeback year"
+42,WR20,Tee Higgins,"Tee Higgins is the WR2 on the Bengals, but if Joe Burrow can stay healthy, he will be in line for an MVP-caliber season, the Bengals have the 4th easiest schedule for WRs, so drafting Tee Higgins is a no-brainer"
+43,RB20,Quinshon Judkins,"Judkins got a huge role in this offense last season. If Sheduer is the starting QB for this lowly browns team, then Judkins will be in line for a massive season because Sanders takes the check-down on around 19% of his throws"
+44,WR21,Davante Adams,"It will be hard for Davante to top his 14 receiving touchdowns from last year, but he is still a safety blanket for Mathew Stafford, and there are no glaring signs that he is slowing down, even considering his age"
+45,TE3,Tyler Warren,Warren has the chance to be the overall TE1 if Daniel Jones keeps up what he did last season and if he does not get hurt
+46,WR22,Zay Flowers,"Flowers did exceptionally well for a WR in a run-heavy offense, but with the new coaching changes, it is up in the air whether they will have him as the main staple of their offense like last year"
+47,RB21,Kyren Williams,"Kyren has been getting older and getting fewer carries, but he is still a viable RB2 in fantasy because he is just on such a good offense"
+48,QB2,Lamar Jackson,"Jackson had a bad season last year, but should be in line for a comeback season with the new coaching changes; they could utilize Lamar's talents more than Harbaugh"
+49,WR23,Jaylen Waddle,"Waddle benefits from having an upgrade at the Quarterback position with Bo Nix, but there is no way of knowing how he will be used in this offense"
+50,TE4,Colston Loveland,"Loveland is in a great offense and broke out late last year. Loveland can end up at TE1, but it will be hard if they lean on the run game more because of the two-headed monster in the running back room"
+51,WR24,Mike Evans,"Evans is a reliable WR, but age may be catching up with his production"
+52,WR25,Luther Burden,"Burden broke out in the last few games. It is still up in the air if he will be the true alpha WR that he is hyped up to be, but he is definately the WR1 on that team"
+53,RB22,David Montgomery,"Montgomery has been a solid RB over the past few years, and with little competition, he has this backfield in a run-first team all to himself"
+54,RB23,Bhayshul Tuten,"Tuten has taken the RB1 role in Jacksonville with the departure of Etienne. He was solid in the receiving and rushing game last year. As the RB2 this year, he will break out"
+55,RB24,D'andre Swift,"Although Swift has unexpectedly found competition for the RB1 spot, this offense is so good that the competition will hardly change that he will still be a good RB2 in fantasy football"
+56,RB25,Treveyon Henderson,"There is some sort of problem between Henderson and Mike Vrabel; there is no way they start Rhemondre Stevenson the whole season after seeing how explosive and electric Henderson is, but it will most likely be a committee in New England, but Henderson should be the RB1 in this offense by the end of the season"
+57,WR26,Carnell Tate,"Tate is the exact WR that Cam Ward needs: a big WR who is not afraid to go up and over to catch the football. He is a rookie, but he will fit in perfectly into this offense"
+58,RB26,Jadarian Price,"With Zach Charbonnet out till December, Price should take this RB1 role easily from George Holani. They had great success establishing a run game, so Price will be an amazing RB, but we do not know if it will stay the same until Charbonnet comes back"
+59,QB3,Drake Maye,"Maye had a great season last year, but with a harder schedule, Maye may have a down year. With the addition of AJ Brown, he will still be a great fantasy Quarterback"
+60,QB4,Jayden Daniels,"Daniels had a gruesome arm injury last year, but he is still a great passer and runner of the football at the Quarterback position. He will have a great year no matter his schedule"
+61,QB5,Jalen Hurts,"Hurts has been a good runner of the football; he gets so many rushing touchdowns, it's insane. Even though his passing has been underwhelming, he is still a top QB for fantasy because of his rushing ability"
+62,WR27,DJ Moore,"DJ Moore is the clear WR1 in this Buffalo offense, but he could replicate exactly what he did with the Bears, putting up average numbers"
+63,RB27,Tony Pollard,"Pollard is the RB1 for an ascending offense; he should have better production than last year, but Tajae Spears will take a huge chunk of the receiving work"
+64,QB6,Joe Burrow,"Burrow is in line for an MVP-type season, but it matters if he starts slow like he historically has, or if he gets injured as he has in his prior seasons"
+65,WR28,Michael Wilson,"Wilson will probably take the WR1 role in this offense, but the Cardinals may be more run-heavy than last season. He will be a solid option in this offense"
+66,WR29,Jameson Williams,Jameson Williams is the definition of a WR that is boom or bust; he has a super-low floor and a super-high ceiling. There is hardly any other way he is in fantasy
+67,TE5,Tucker Kraft,Kraft was the TE3 before his injury; he should be in line for a great season with no clear pass catcher in front of him
+68,WR30,Makai Lemon,"Makai Lemon was a first-draft selection by the Eagles. With the departure of AJ Brown, there are a lot of vacated targets, but rookies usually need some time to adjust to the pros"
+69,TE6,Kyle Pitts,"Kyle Pitts was amazing last year, but it is questionable whether he can return to his former self with the possibility of Tua taking the starting role at Quarterback"
+70,QB7,Justin Herbert,"Justin Herbert should benefit from the new hiring of Mike McDaniel, who would utilize his full talent set"
+71,WR31,Brian Thomas Jr,"While Brian Thomas Jr had a down season last year, he was battling through injuries all season. There is no doubt he has the talent after his great rookie season, and with his great upside, I don't see any reason why the Jaguars will make a strong effort to get him more involved now that he is fully healthy."
+72,WR32,Alec Pierce,"Alec Pierce has led the NFL in average yards per reception the last two years, but this comes with a downside, as he had under 50 targets in both years as well. It's also very hard to trust Daniel Jones to repeat his success from last season, when he has been incredibly inconsistent in his career"
+73,WR33,Parker Washington,"Washington has gotten better every season and had a little breakout season last year. Even though his numbers got better after the Myers trade, there is too much competition with Thomas, Myers, and, at some points, Travis Hunter."
+74,QB8,Jaxson Dart,"Dart was very good for a rookie, and his high rushing upside gives him a strong boost. While there are injury concerns, now with Harbaugh at the helm, Nabers/Skattebo healthy, and a better offensive line, he should be in a better position to be better and healthier. A sophomore slump is possible, though."
+75,QB9,Trevor Lawrence,Trevor Lawrence has been unlocked by Liam Cohen and is a great rusher and passer of the football
+76,WR34,Rome Odunze,"Rome has said earlier this offseason that he will never be able to reach 100% again. He is still a high-upside fantasy WR, but don't bank on him having a great year"
+77,WR35,Jordyn Tyson,"Tyson was drafted with the Saints' early first-round pick, so they will use him, but he has torn his Achilles multiple times in college, leaving speculation for him playing this whole season and his use in this offense"
+78,RB28,Rico Dowdle,"While Dowdle has competition with Warren, Mike McCarthy was Rico's playcaller during his breakout 2024 season, so I could easily see him being a solid option. They also have a massive loss in over 70 catches after the loss of Kenneth Gainwell, and Rico could easily take those receptions. "
+79,RB29,Jaylen Warren,"Warren will split carries with Rico Dowdle, but he should get the bulk of the pass-catching work"
+80,WR36,Courtland Sutton,"Sutton had a disappointing last year, and it is uncertain if he will maintain his WR1 role in this offense"
+81,QB10,Dak Prescott,"Dak is one of the great pocket Quarterbacks in the NFL and he just threw for 4500 yards without his WR1 he should still be able to replicate and better what he did last year but we do not know if they will run the ball and his division got alot harder with the teams in that division focusing on drafting or signing key defensive pieces, he also is not a mobile quarterback which makes him lower than other Quarterbacks"
+82,WR37,Chris Godwin,"Godwin is the WR2 on a good offense, but Bucky is back, and they may be more run-heavy, but Evans left, so there are more targets in this offense for him"
+83,WR38,Wandale Robinson,"Wandale showed last year that he isn't just a possession receiver and can stretch the field and consistnelty creates seperation. He already worked with Daboll on the Giants, who loved to feature him in the offense, as he had over 90 catches in both 2024 and 2025. "
+84,TE7,Sam Laporta,Laporta should be a good TE for fantasy; he will probably be utilized more in the pass-catching game this season
+85,WR39,Dk Metcalf,"Metcalf is the WR1 on the Steelers, but it all depends if Rodgers still has it"
+86,WR40,Marvin Harrison,"Harrison has been going viral for having catching issues at training camp, but he has the talent to still be a great WR for fantasy, bt Wilson should be the WR1 for this team"
+87,QB11,Caleb Williams,"The Bears have never had a 4000 passing yard season, so following the trend, it is reasonable to assume that Williams will not pass that achievement, but his legs were his biggest fantasy asset"
+88,TE8,Harold Fanin,"Fanin has been a great TE for the Browns, and with the departure of David Njoku, he should be a great fantasy TE, but the Browns have a bad QB situation, and they drafted Denzel Boston and KC Concepcion, so there will be more targets in this offense than last year"
+89,WR41,Michael Pittman,"Pittman should play in the slot, so he will get a lot of targets in this offense, but there is no telling how Rodgers will play this upcoming season"
+90,RB30,RJ Harvey,"It is a toss-up if Harvey will actually take the role runningback role, but it will be hard for him to replicate his 14 rushing touchdowns last year"
+91,WR42,Christian Watson,"In the post-Davante Packers era, taking Packers receivers has not ended well for most fantasy owners. However, Watson just inked a 92M contract with the team, positioning him as the true WR1. With Wicks and Doubs out of town, he could truly break out as a WR1 this season."
+92,WR43,Deebo Samuel,"Although Deebo is old and the news around him has been saying that he will play running back, he will be put back into that WR role in that offense"
+93,RB31,Kyle Monangai,"Monangai has shown that he is a good running back, but he will compete for the starting role with Swift"
+94,RB32,Blake Corum,"Corum is a valuable RB handcuff, he ended last season with 953 rushing yards and with Kyren Willaims getting older and less carries over the past two years, Corum can take the lead back role this season but it will probably be a committe but the potential for Kyren to get injured and Corum running away with the job can not be ruled out"
+95,TE9,Travis Kelce,"Kelce has always been a top-5 TE in fantasy, but this may be the year when age catches up with him"
+96,WR44,Quentin Johnston,"Johnston outperformed Mcconkey last year, but he is still the WR2 on this offense. This offense will be transformed by McDaniel, so Johnston will be a solid fantasy WR"
+97,QB12,Brock Purdy,"Brock Purdy has always been a great fantasy QB every year, but his division has gotten way harder, and his receivers have gotten older and have gotten and sustained injuries "
+98,TE10,George Kittle,"Kittle has been a reliable TE for fantasy, but his injuries and his age may be showing in his production, and with the addition of Mike Evans and Deebo Samuel, he may get fewer targets in this offense"
+99,RB33,Jonathon Brooks,"All signs have pointed to Brooks being the lead back this season for Carolina with high praise from every coach, but this will definately be a committee between Brooks and Hubbard"
+100,RB34,Jacory Croskey-Merritt,"Merrit should still be running back one on this team because they only paid Rachaad White 2 million for one year, and Chris Rodriguez left, so Merit should mostly have this backfield all to himself"
+101,RB35,Jk Dobbins,"Dobbins is in competition with Rj Harvey for the starting role, so he will be a fine Flex play or backup in fantasy football"
+102,RB36,Chuba Hubbard,"News out of training camp has signaled that Brooks will take the starting role, but Hubbard will still be in competition with Brooks at least for the first few weeks if Brook does take it, but there is a chance that Hubbard will remain that guy in Carolina"
+103,WR45,Josh Downs,"Every year we think Josh Downs is going to be a sleeper, but this year, with Pittman gone, there are so many vacated targets in this offense, so Downs will get a bigger workload"
+104,RB36,Jordan Mason,"Mason should take the RB1 role from Aaron Jones this year, but this offense could be lackluster this upcoming season"
+105,WR46,Jakobi Meyers,"Meyers was a solid WR for the Jaguars last year, but there is no telling who will actually be the WR1 in this offense"
+106,QB11,Patrick Mahomes,"Mahomes looks healthy, and this Chiefs team has been the best he has had in the past few years"
+107,RB38,Kenneth Gainwell,"Gainwell averaged 16 PPR PPG last season, but he is a receiving back. With Bucky taking most of the rushing opportunity, Gainwell will only get the receiving work"
+108,RB39,Raachad White,"White signed with the Commanders for 2 million. White has been a historically inefficient running back, but he will get all the receiving work  "
+109,QB12,Matthew Stafford,"Stafford was amazing last year, but the Rams will blow out teams early and bench their starters because of their insane defense and insane offense"
+110,RB40,Woody Marks,"Marks is the RB2 in this Texans offense, but he is in contention for the RB1 role, but he is a good handcuff RB"
+111,WR47,KC Concepcion,"Concepcion was the Browns' first WR that they took in the draft. He should be the WR1 on the Browns, but it all depends on who and how the Browns Quarterbacks play"
+112,WR48,Jordan Addison,"Addison is one of the best WR2s in the NFL, but the QB situation is so bad, and Juan Jennings got signed to the Vikings, so he may have a lackluster year"
+113,TE11,Brenton Strange,"Strange is a good TE in a good offense, but there are too many mouths to feed in that offense"
+114,RB41,Aaron Jones,"Aaron Jones was horrible last year, and with competition, he is just a handcuff RB in fantasy"
+115,TE12 ,Dallas Goedert,"Goedert may have a big season, but they will run the ball more, and they replaced Brown with Makai Lemon, so there are very few vacated targets because of Lemon"
+116,TE13,Hunter Henry,"Henry should be a fine fantasy TE, but that offense just got AJ Brown, and there are just too many mouths to feed, and if anything, they will try to run the ball more"
+117,TE14,Jake Ferguson,"Ferguson was only a good TE when Lamb was hurt, so with Lamb back, be prepared for a lackluster year for him"
+118,WR49,Xavier Worthy,"Worthy is still the WR2 on this offense, and he and Mahomes have trouble connecting deep, and that is what Worthy is known for, so it is hard for him to actually stay consistent in fantasy football"
+119,WR50,Jayden Reed,"Reed is the WR2 in this offense, but this offense does not really benefit WRs"
+120,RB42,Tyler Algeier,Algeier is a great fantasy RB handcuff
+121,WR51,Jalen Coker,"Coker is the WR2 on the Panthers, and he could break out this upcoming season"
+122,QB13,Jared Goff,"Goff has been a reliable fantasy QB, but he is not a good runner of the football"
+123,QB14,Kyler Murray,"Murray is a good late-round QB2. If he starts for the Vikings, he will be a great fantasy QB1 because this Vikings team is the best team he has ever had, and Kevin O'Connell will develop him into a monster"
+124,TE14,Isiah Likely,"Likely is a good fantasy TE, but the offense will be more run-heavy, and we do not know if Dart is really the guy in New York with the small sample size"
+125,WR52,Khalil Shakir,Shakir is a good WR2 on a good offense
+126,QB16,Tyler Shough,Shough is a good stash fantasy QB because he plays 2 bottom 10 defenses during the fantasy playoffs
+127,TE15,Chig Okonkwo,Okonkwo should fit in and take Zach Ertz's style in this offense
+128,WR53,Matthew Golden,"Golden is the WR3, but he has the talent to excel. Maybe his breakout will be this year, but it is unlikely"
+129,QB15,Sam Darnold,"Darnold is in a good offense, but a hard division; he should still be a good fantasy QB"
+130,TE16,Dalton Schultz,"Shultz is a decent TE on a run-heavy team; he will have some good weeks, but the bad ones will outweigh the good ones"
+131,TE17,Juwan Johnson,"Johnson is a good TE on an offense that changed their identity over this offseason. They will run the ball more, so Johnson will get fewer targets, and with the addition of Tyson hurts Johnson's target share"
+132,TE18,Kenyon Sadiq,"Sadiq is a freak; he is so athletic, but Mason Taylor is still the TE1, but Sadiq could take his spot"
+133,WR54,Trey Tucker,"Tucker is the WR1 on a run-heavy offense, but he could break out in Klint Kubiak's offense "
+134,RB43,Tyrone Tracy,"Tracy is a good handcuff RB, especially since Skattebo is a very physical RB"
+135,TE19,AJ Barner,"Barner played great last year, but he did not have the greatest stats. He should have a bigger role in this offense, but with the departure of Klint Kubiak, the offense itself should decline a bit"
+136,WR55,Malik Washington,"Washington is the WR1 on the Dolphins, but Malik Washington is in a questionable QB situation at best"
+137,TE20,TJ Hockenson,Hockenson is a decent TE on an offense with no certainty at QB
+138,WR56,Travis Hunter,News on Hunter has said that he will play more corner than WR
+139,WR57,Cyrus Allen,Allen has been showing signs of a breakout rookie; he has been receiving high praise and can be a great flex play in fantasy
+140,WR58,Antonio Williams,Williams is a rookie and a potential breakout for the Commanders with him at WR2
+141,K1,Jason Myers,The Seahawks kick so many field goals
+142,K2,Ka'imi Fairbairn,"The Texans' offense is middle of the pack, and Fairbairn has consistently finished as a top-5 kicker "
+143,K3,Brandon Aubrey,"The Cowboys have a stellar offense, but they won't kick as many field goals as last year because Lamb is back and healthy"
+144,DEF1,Rams DEF,"The Rams play Arizona twice a year, and with the additions of Trent McDuffy and Myles Garrett, this defense makes for a monstrous unit"
+145,DEF2,Texans DEF,"The Texans have a great defense, but they don't play any bottom 5 offensive units this upcoming year"
+146,QB17,Baker Mayfield,"Mayfield was playing through Injury last year, but he was a fine fantasy QB after his strong start last year"
+147,DEF3,Seahawks DEF,"The Seahawks play Arizona twice a year, and they have a menacing defense"
+148,WR60,Jayden Higgins,Higgins is a WR2 on a run-heavy offense
+149,RB45,Isiaiah Pacheco,Pacheco is a very valuable RB handcuff
+150,RB46,Ollie Gordon,Gordon is a good RB handcuff
+151,RB47,Alvin Kamara,Kamara is a good RB handcuff
+152,WR61,Denzel Boston,Boston is a WR2 on a team with questionable QB play
+153,WR62,Rashid Shaheed,"Shaheed is the WR2 on a good offense, but in a hard division and in a declining offense"
+154,RB48,Brian Robinson,Robinson is a Good RB handcuff 
+155,RB49,Chris Rodriguez,Rodriguez is a good RB handcuff
+156,WR63,Reshod Bateman,Bateman is the WR2 in a run heavy offense
+157,RB50,Tyjae Spears,Tyjae spears is a good RB handcuff
+158,RB51,Dylan Sampson,Sampson is a great RB handcuff
+159,RB52,Braelon Allen,"Allen is part of the three-headed monster in New York, but he is more talented than Isiah Davis, so he would be in line for the lead role if anything happens to Hall"
+160,RB53,Tank Bigsby,Bigsby is a good RB handcuff
+161,TE21,Orande Gadsen,"Gadsen was good last year, but David Njoku got signed to the Chargers, so his role in this offense will be limited"
+162,TE22,Greg Dulcich,Dulcich is the TE1 on a bad offense
+163,TE23,Cade Otton,"Otton is the TE1, and he can break out, but they will be more run-heavy with Bucky back"
+164,WR64,Stefon Diggs,"Although Diggs has not been signed yet, he has a lot left in the tank, but there haven't been any rumors or news about where or how soon he will sign "
+165,WR65,Adonai Mitchell,"Mitchell was a decent WR for fantasy with Wilson gone, but with him back, he will fall back down to what he was in Indianapolis"
+166,QB17,Malik Willis,"Willis is a good rusher of the football, but he is in a bad offense, and he has been inaccurate in throwing the ball"
+167,QB18,Jordan Love,"Love has been a consistent QB in fantasy, but he does not have a high enough ceiling to be considered above the other guys"
+168,QB19,CJ Stroud,"Stroud has been disappointing throwing the football; he has gotten worse every year rather than growing, but with a new contract on the line, he may be incentivised to perform "
+169,QB20,Cam Ward,"Ward got an upgraded coach, and receiving corps he should be good, but he plays in a hard division, and he is just in year 2"
+170,K4,Cameron Dicker,"The Chargers have a great offense, and they will kick a lot because of their good division and hard schedule"
+171,WR66,De'Zhaun Stribling,"Stribling has been showing out at training camp, but they just signed Samuel, so there will be more competition than originally thought"
+172,RB54,James Connor,"Connor is the RB3 for a bad offense, but he will get some carries and catches to give breaks to the guys in front of him"
+173,RB55,Sean Tucker,"Tucker is the RB3, but he will get the goal-line carries in this offense"
+174,WR67,Trey Harris,Harris is the WR3 on a good offense
+175,WR68,Jaylen Noel,Noel is the veteran WR that this team needs; he will be a good fit for a young group of WRs
+176,WR69,Troy Franklin,"Franklin is the WR3, but they will probably be more run-heavy this year compared to last year"
+177,WR70,Jerry Jeudy,Jeudy is the WR3 on a team with bad QB play
+178,DEF4,Eagles DEF,"The Eagles' defense is filled with superstars, but they play in a hard division"
+179,DEF5,Broncos DEF,"The Broncos' defense flies around; they get so many sacks, but they play in a hard division"
+180,DEF6 ,Ravens DEF,The Ravens have a new defensive coordinator so that they will be better than last year
+181,DEF7,Patriots DEF,"Patriots have a great defence, but they play better teams this year, but they also play the Jets and Dolphins twice a year"
+182,DEF8 ,Vikings DEF,Brian Flores is a defensive mastermind; this defense will be good no matter who is on that team
+183,DEF9,Lions DEF,"The Lions have a good defense, but they are in a hard division"
+184,DEF10,Jaguars DEF,"The Jags have a good defense, but they play a lot of good offenses "
+185,DEF11,Steelers DEF,"The Steelers have the highest-paid defense in the league, and they got a new defensive coordinator, but they do play in a hard division "
+186,DEF12,Chiefs DEF,"The Chiefs have a good defense, but again, they play in a hard division"
+187,RB56,Jonah Coleman,"Coleman is a rookie RB, but there are established RBs in front of him; he will be a good handcuff in this run-heavy offense"
+188,K5,Harrison Mevis ,"The Rams' offense is good, maybe to the point of being too good, so Mevis will make fewer field goals"
+189,K6,Andre Borregales,"The Patriots have a harder schedule, but they will still have a good offense. Borregales will make a lot of field goals"
+190,K7,Eddy Piniero,Piniero was a great kicker last year; he should have the same production as last year
+191,K8,Will Reichard,Reichard will be good if the Vikings' offense gets better under whoever takes the starting QB role
+192,K9,Cairo Santos,Santos will make a lot of field goals because the Bears' offense got better
+193,K10,Harrison Butker,"Butker is a reliable kicker; he scores a lot of extra points, but not field goals"
+194,K11,Evan McPherson,McPherson is in a very good offense and does not score field goals
+195,K12,Jake Bates,"Bates is in a good offense, but it is too good for him to score a lot of field goals"
+196,QB21,Malik Willis,"Willis is a good rusher of the football, but he is in a bad offense, and he has been inaccurate while throwing the ball"
+197,WR71,Jauan Jennings,Jauan Jennings is the WR3 in a questionable QB situation
+198,WR72,Tyreek Hill,"Hill has not been signed yet, but it is worth taking a shot at him late in your draft if he gets signed somewhere"
+199,WR73,Keyshon Boutte,"Boutte is the WR3 in a good offense, but he has stated that he wants to leave to get a better shot at being a WR1"
+200,DEF13,Panthers DEF,"The Panthers' defense is in a mediocre division, and they have stars all around, but the defensive schemes are questionable"
