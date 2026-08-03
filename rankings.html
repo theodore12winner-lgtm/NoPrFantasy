@@ -93,7 +93,13 @@
         }
 
         .results-container {
+            
             margin-top: 30px;
+            height: 700px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+
         }
 
         .no-results {
@@ -111,6 +117,9 @@
         }
 
         th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
             background-color: #234D63;
             color: white;
             padding: 12px 15px;
@@ -128,7 +137,11 @@
         tr:hover {
             background-color: #FFD8A8;
         }
-
+        .selected-player td {
+            background-color: #FFE08A !important;
+            border-left: 5px solid #234D63;
+            font-weight: bold;
+        }
         tr:nth-child(even) {
             background-color: #FFF1DC;
         }
@@ -177,6 +190,14 @@
             border: 1px solid #f5c6cb;
             display: block;
         }
+        .player-details{
+             margin-top:20px;
+              padding:20px;
+              background:white;
+             border-radius:8px;
+             border-left:6px solid #234D63;
+             box-shadow:0 2px 8px rgba(0,0,0,.1);
+       }
     </style>
 </head>
 <body>
@@ -196,6 +217,10 @@
         </div>
 
         <div style="margin-bottom:15px;"><label><strong>Sort by:</strong></label> <select id="sortSelect"><option value="rank">Rank</option><option value="last">Last Name</option></select></div><div id="resultsContainer" class="results-container"></div>
+           <div id="playerDetails" class="player-details">
+               <h2>Select a player</h2>
+               <p>Player information will appear here.</p>
+           </div>
     </div>
 
     <script>
@@ -362,9 +387,10 @@
                 return;
             }
 
-            const headers = ['Rank', 'Player', 'Description'];
+            const headers=`<tr>	<th onclick="sortByRank()">Rank</th> <th onclick="sortByPlayer()">Player</th><th>Description</th> </tr>`;
             const rowsHtml = getSortedPlayers().map(p => `
-                <tr>
+                <tr id="player-${p.player.replace(/\s+/g,'-')}"
+    		onclick="displayPlayerInfo(playerData.find(x=>x.player==='${p.player.replace(/'/g,"\\'")}'))">
                     <td class="rank-cell">${escapeHtml(p.rank)}</td>
                     <td class="player-cell">${escapeHtml(p.player)}</td>
                     <td>${escapeHtml(p.description)}</td>
@@ -374,10 +400,15 @@
             resultsContainer.innerHTML = `
                 <table>
                     <thead>
-                        <tr>
-                            ${headers.map(h => `<th>${h}</th>`).join('')}
-                        </tr>
-                    </thead>
+        <tr>
+            <th onclick="sortByRank()">Rank</th>
+            <th onclick="sortByPlayer()">Player</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        ${rowsHtml}
+    </tbody>
                     <tbody>
                         ${rowsHtml}
                     </tbody>
@@ -469,26 +500,61 @@
         }
 
         // Display player information in table
-        function displayPlayerInfo(player) {
-            resultsContainer.innerHTML = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Player</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="rank-cell">${escapeHtml(player.rank)}</td>
-                            <td>${escapeHtml(player.player)}</td>
-                            <td>${escapeHtml(player.description)}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            `;
-        }
+        function displayPlayerInfo(player){
+
+    		const details=document.getElementById("playerDetails");
+
+    		details.innerHTML=`
+        		<h2>${escapeHtml(player.player)}</h2>
+
+        	<h3>${escapeHtml(player.rank)}</h3>
+
+        	<p>${escapeHtml(player.description)}</p>
+    `;
+
+    document
+        .querySelectorAll("tr")
+        .forEach(r=>r.classList.remove("selected-player"));
+
+    const id="player-"+player.player.replace(/\s+/g,"-");
+
+    const row=document.getElementById(id);
+
+    if(row){
+
+        row.classList.add("selected-player");
+
+        row.scrollIntoView({
+
+            behavior:"smooth",
+
+            block:"center"
+
+        });
+
+    }
+
+}
+
+        function sortByRank(){
+
+    playerData.sort(
+        (a,b)=>parseInt(a.rank)-parseInt(b.rank)
+    );
+
+    displayAllPlayers();
+
+}
+
+function sortByPlayer(){
+
+    playerData.sort(
+        (a,b)=>a.player.localeCompare(b.player)
+    );
+
+    displayAllPlayers();
+
+}
 
         // Show status message
         function showStatus(message, type) {
