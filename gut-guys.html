@@ -6,8 +6,10 @@
   <title>Gut Guys from the Guys</title>
   <style>
     :root{ --bg:#f3f4f6; --box-bg:#ffffff; --text:#000000; }
-    body{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:var(--text); margin:2rem; }
+    body{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#071023 0%,#072033 60%); color:var(--text); margin:2rem; }
     .header{ text-align:center; margin-bottom:1.5rem; }
+    /* make the header title and subtitle white while leaving boxes/text inside them unchanged */
+    .header h1, .header p { color: #ffffff; }
     h1{ margin:0 0 0.25rem 0; font-size:1.8rem; }
     .container{ display:flex; gap:1rem; align-items:flex-start; flex-wrap:wrap; }
     .box{ background:var(--box-bg); color:var(--text); padding:1rem 1.25rem; border-radius:8px; box-shadow:0 1px 3px rgba(0,0,0,0.08); flex:1 1 260px; min-width:220px; }
