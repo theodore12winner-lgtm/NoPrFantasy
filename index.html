@@ -38,6 +38,9 @@
       text-align:left;
       box-sizing:border-box;
     }
+    /* add 1 line of space between stacked boxes */
+    .note-box + .note-box{margin-top:1rem}
+
     .note-box .btn{
       display:block; /* place the button on its own line */
       margin-top:16px; /* space between text and button */
@@ -55,11 +58,7 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <!-- Display an image with width and height -->
-       <img src="images/NoPRLogo.png" 
-         alt="No Pr Fantasy logo" 
-         width="200" 
-         height="150">
+       <img src="images/NoPRLogo.png" alt="No Pr Fantasy logo" width="200" height="150">
         <div>
           <div style="font-weight:800;color:var(--text)">No Pr Fantasy</div>
           <div style="font-size:0.85rem;color:var(--muted)">Fantasy Football</div>
@@ -67,7 +66,6 @@
       </div>
 
       <nav aria-label="Primary">
-        <!-- Navigation links removed as requested -->
       </nav>
     </header>
 
@@ -79,34 +77,24 @@
             <p style="margin:0">Your source for unbiased PPR rankings and league info for the 2026–2027 season.</p>
             <a class="btn" href="rankings.html">View Rankings</a>
           </div>
+
+          <div class="note-box">
+            <p style="margin:0">Gut Guys from the Guys</p>
+            <a class="btn" href="gut-guys.html">View Gut Guys</a>
+          </div>
+
+          <div class="note-box">
+            <p style="margin:0">Dud Guys from the Guys</p>
+            <a class="btn" href="dud-guys.html">View Dud Guys</a>
+          </div>
+
         </div>
       </section>
-
-<!--       <section aria-labelledby="quick-links">
-        <h2 id="quick-links" style="margin:8px 0 6px 0;color:var(--card)">Quick links</h2>
-        <div class="cards">
-          <div class="card">
-            <strong>Rankings</strong>
-            <div style="margin-top:8px;color:var(--muted)">Team standings, rankings, and player info. <a href="rankings.html" style="color:var(--accent);text-decoration:none">Open</a></div>
-          </div>
-         <div class="card">
-            <strong>Roster</strong>
-            <div style="margin-top:8px;color:var(--muted)">Manage rosters and lineups. <a href="roster.html" style="color:var(--accent);text-decoration:none">Open</a></div>
-          </div>
-          <div class="card">
-            <strong>Schedule</strong>
-            <div style="margin-top:8px;color:var(--muted)">Matchups and results. <a href="schedule.html" style="color:var(--accent);text-decoration:none">Open</a></div>
-          </div>   
-        </div>
-      </section>   -->
-
     </main>
-
 
   </div>
 
   <script>
-    // Highlight current nav item (no links present)
     (function(){
       try{
         const links = document.querySelectorAll('nav a');
