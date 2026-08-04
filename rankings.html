@@ -93,13 +93,32 @@
         }
 
         .results-container {
-            
             margin-top: 30px;
             height: 700px;
-            overflow-y: auto;
+            overflow-y: scroll;
+            overflow-x: hidden;
             border: 1px solid #ddd;
             border-radius: 8px;
+            background-color: #FFF3E0;
+            padding: 0;
+        }
 
+        .results-container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .results-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 8px;
+        }
+
+        .results-container::-webkit-scrollbar-thumb {
+            background: #234D63;
+            border-radius: 8px;
+        }
+
+        .results-container::-webkit-scrollbar-thumb:hover {
+            background: #1a3647;
         }
 
         .no-results {
@@ -112,7 +131,7 @@
         table {
     	    width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin: 0;
             background-color: #FFF3E0;
         }
 
