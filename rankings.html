@@ -216,7 +216,7 @@
             <div id="autocompleteList" class="autocomplete-list"></div>
         </div>
 
-        <div style="margin-bottom:15px;"><label><strong>Sort by:</strong></label> <select id="sortSelect"><option value="rank">Rank</option><option value="last">Last Name</option></select></div><div id="resultsContainer" class="results-container"></div>
+        <div style="margin-bottom:15px;"><label><strong>Sort by:</strong></label> <select id="sortSelect"><option value="rank">Rank</option><option value="last">Last Name</option></select></div><div id="resultsContainer"></div>
            <div id="playerDetails" class="player-details">
                <h2>Select a player</h2>
                <p>Player information will appear here.</p>
@@ -379,7 +379,7 @@
             }
         }
 
-        function getSortedPlayers(){const m=document.getElementById("sortSelect")?.value||"rank";const a=[...playerData];if(m==="last"){a.sort((x,y)=>{const lx=x.player.trim().split(/\s+/).pop().toLowerCase(),ly=y.player.trim().split(/\s+/).pop().toLowerCase();return lx.localeCompare(ly)||x.player.localeCompare(y.player);});}else{a.sort((x,y)=>(parseInt(x.rank)||9999)-(parseInt(y.rank)||9999));}return a;}
+        function getSortedPlayers(){const m=document.getElementById("sortSelect")?.value||"rank";const a=[...playerData];if(m==="last"){a.sort((x,y)=>{const lx=x.player.trim().split(/\s+/).pop().toLowerCase(),ly=y.player.trim().split(/\s+/).pop().toLowerCase();return lx.localeCompare(ly)})}else{a.sort((x,y)=>parseInt(x.rank)||0-parseInt(y.rank)||0)}return a}
 // Display all players in a table
         function displayAllPlayers() {
             if (!playerData || playerData.length === 0) {
@@ -409,9 +409,6 @@
     <tbody>
         ${rowsHtml}
     </tbody>
-                    <tbody>
-                        ${rowsHtml}
-                    </tbody>
                 </table>
             `;
         }
