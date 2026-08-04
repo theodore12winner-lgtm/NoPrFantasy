@@ -28,8 +28,22 @@
     .hero h1{margin:0;font-size:1.6rem}
     .hero p{margin:8px 0 0;color:var(--muted)}
     /* white box with black text for the note */
-    .note-box{background:#ffffff;color:#000000;padding:12px;border-radius:8px;display:block;max-width:64ch;text-align:left}
-    .note-box .btn{display:inline-block;margin-top:12px;margin-left:0}
+    .note-box{
+      background:#ffffff;
+      color:#000000;
+      padding:20px 16px 28px;
+      border-radius:8px;
+      display:block;
+      max-width:64ch;
+      text-align:left;
+      box-sizing:border-box;
+    }
+    .note-box .btn{
+      display:block; /* place the button on its own line */
+      margin-top:16px; /* space between text and button */
+      margin-left:0;
+      width:auto;
+    }
     .cards{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
     .card{background:rgba(255,255,255,0.96);padding:14px;border-radius:10px;flex:1 1 220px;min-width:180px;color:var(--bg);box-shadow:0 2px 6px rgba(2,6,23,.06)}
     .btn{display:inline-block;background:var(--accent);color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:700}
@@ -61,7 +75,8 @@
       <section class="hero" aria-labelledby="home-title">
         <div>
           <h1 id="home-title">No Pr Fantasy</h1>
-          <div class="note-box">Your source for unbiased PPR rankings and league info for the 2026–2027 season.
+          <div class="note-box">
+            <p style="margin:0">Your source for unbiased PPR rankings and league info for the 2026–2027 season.</p>
             <a class="btn" href="rankings.html">View Rankings</a>
           </div>
         </div>
