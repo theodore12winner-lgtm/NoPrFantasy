@@ -93,41 +93,13 @@
         }
 
         .results-container {
-            display: block;
+            
             margin-top: 30px;
             height: 700px;
-            overflow-y: scroll;
-            overflow-x: hidden;
+            overflow-y: auto;
             border: 1px solid #ddd;
             border-radius: 8px;
-            background-color: #FFF3E0;
-            padding: 0;
-        }
 
-        /* Firefox scrollbar */
-        .results-container {
-            scrollbar-width: thin;
-            scrollbar-color: #234D63 #f1f1f1;
-        }
-
-        /* Chrome/Edge/Safari scrollbar */
-        .results-container::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        .results-container::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 8px;
-        }
-
-        .results-container::-webkit-scrollbar-thumb {
-            background: #234D63;
-            border-radius: 8px;
-            border: 2px solid #f1f1f1;
-        }
-
-        .results-container::-webkit-scrollbar-thumb:hover {
-            background: #1a3647;
         }
 
         .no-results {
@@ -140,6 +112,7 @@
         table {
     	    width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
             background-color: #FFF3E0;
         }
 
@@ -243,7 +216,7 @@
             <div id="autocompleteList" class="autocomplete-list"></div>
         </div>
 
-        <div style="margin-bottom:15px;"><label><strong>Sort by:</strong></label> <select id="sortSelect"><option value="rank">Rank</option><option value="last">Last Name</option></select></div><div id="resultsContainer"></div>
+        <div style="margin-bottom:15px;"><label><strong>Sort by:</strong></label> <select id="sortSelect"><option value="rank">Rank</option><option value="last">Last Name</option></select></div><div id="resultsContainer" class="results-container"></div>
            <div id="playerDetails" class="player-details">
                <h2>Select a player</h2>
                <p>Player information will appear here.</p>
@@ -406,7 +379,7 @@
             }
         }
 
-        function getSortedPlayers(){const m=document.getElementById("sortSelect")?.value||"rank";const a=[...playerData];if(m==="last"){a.sort((x,y)=>{const lx=x.player.trim().split(/\s+/).pop().toLowerCase(),ly=y.player.trim().split(/\s+/).pop().toLowerCase();return lx.localeCompare(ly)})}else{a.sort((x,y)=>parseInt(x.rank)||0-parseInt(y.rank)||0)}return a}
+        function getSortedPlayers(){const m=document.getElementById("sortSelect")?.value||"rank";const a=[...playerData];if(m==="last"){a.sort((x,y)=>{const lx=x.player.trim().split(/\s+/).pop().toLowerCase(),ly=y.player.trim().split(/\s+/).pop().toLowerCase();return lx.localeCompare(ly)||x.player.localeCompare(y.player);});}else{a.sort((x,y)=>(parseInt(x.rank)||9999)-(parseInt(y.rank)||9999));}return a;}
 // Display all players in a table
         function displayAllPlayers() {
             if (!playerData || playerData.length === 0) {
@@ -433,9 +406,10 @@
             <th>Description</th>
         </tr>
     </thead>
-    <tbody>
-        ${rowsHtml}
-    </tbody>
+    
+                    <tbody>
+                        ${rowsHtml}
+                    </tbody>
                 </table>
             `;
         }
