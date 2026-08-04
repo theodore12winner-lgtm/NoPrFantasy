@@ -93,6 +93,7 @@
         }
 
         .results-container {
+            display: block;
             margin-top: 30px;
             height: 700px;
             overflow-y: scroll;
@@ -103,6 +104,13 @@
             padding: 0;
         }
 
+        /* Firefox scrollbar */
+        .results-container {
+            scrollbar-width: thin;
+            scrollbar-color: #234D63 #f1f1f1;
+        }
+
+        /* Chrome/Edge/Safari scrollbar */
         .results-container::-webkit-scrollbar {
             width: 10px;
         }
@@ -115,6 +123,7 @@
         .results-container::-webkit-scrollbar-thumb {
             background: #234D63;
             border-radius: 8px;
+            border: 2px solid #f1f1f1;
         }
 
         .results-container::-webkit-scrollbar-thumb:hover {
@@ -131,7 +140,6 @@
         table {
     	    width: 100%;
             border-collapse: collapse;
-            margin: 0;
             background-color: #FFF3E0;
         }
 
