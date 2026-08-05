@@ -97,6 +97,7 @@
             margin-top: 30px;
             height: 700px;
             overflow-y: auto;
+            overflow-x: auto;
             border: 1px solid #ddd;
             border-radius: 8px;
 
@@ -112,6 +113,7 @@
         table {
     	    width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
             margin-top: 20px;
             background-color: #FFF3E0;
         }
@@ -133,10 +135,29 @@
            border-bottom: 1px solid #E6C9A8;
            background-color: #FFF3E0;
         }
-
+      
         tr:hover {
             background-color: #FFD8A8;
         }
+        .description-text {
+        max-width: 300px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+            cursor: pointer;
+    }
+
+.description-text.expanded {
+    -webkit-line-clamp: unset;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .description-text {
+        max-width: 180px;
+    }
+}
         .selected-player td {
             background-color: #FFE08A !important;
             border-left: 5px solid #234D63;
@@ -393,7 +414,11 @@
     		onclick="displayPlayerInfo(playerData.find(x=>x.player==='${p.player.replace(/'/g,"\\'")}'))">
                     <td class="rank-cell">${escapeHtml(p.rank)}</td>
                     <td class="player-cell">${escapeHtml(p.player)}</td>
-                    <td>${escapeHtml(p.description)}</td>
+                    <td>
+                      <div class="description-text">
+                           ${escapeHtml(p.description)}
+                      </div>
+                      </td>
                 </tr>
             `).join('');
 
@@ -582,7 +607,11 @@ function sortByPlayer(){
                 autocompleteList.classList.remove('show');
             }
         });
-
+        document.addEventListener("click", function(e) {
+           if (e.target.classList.contains("description-text")) {
+              e.target.classList.toggle("expanded");
+           }
+       });
         // Load default file on page load
         document.addEventListener("DOMContentLoaded",()=>{loadDefaultFile();document.getElementById("sortSelect").addEventListener("change",displayAllPlayers);});
     </script>
